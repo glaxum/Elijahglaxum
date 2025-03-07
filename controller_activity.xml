@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ControllerActivity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+        <!-- Header Title -->
+        <TextView
+            android:id="@+id/headerTitle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#0D122E"
+            android:fontFamily="sans-serif-medium"
+            android:padding="10dp"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="#F1DACE"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <!-- Connection Status Section -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/connectionStatusSection"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@drawable/rounded_linear_layout"
+            android:elevation="4dp"
+            app:layout_constraintTop_toBottomOf="@id/headerTitle"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <TextView
+                android:id="@+id/connectionStatusTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="#02125E"
+                android:padding="10dp"
+                android:text="Connection Status"
+                android:textAlignment="center"
+                android:textColor="#D1CAC7"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <TextView
+                android:id="@+id/txtConnection"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="status"
+                android:textColor="#333333"
+                android:textSize="20sp"
+                android:textStyle="bold|italic"
+                app:layout_constraintTop_toBottomOf="@id/connectionStatusTitle"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:animation="@anim/pulse_animation" /> <!-- animation -->
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Temperature and Humidity Section (Side by Side) -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/temperatureHumiditySection"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:layout_constraintTop_toBottomOf="@id/connectionStatusSection"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <!-- Temperature Section -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/temperatureSection"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/rounded_linear_layout"
+                android:elevation="4dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/humiditySection">
+
+                <TextView
+                    android:id="@+id/temperatureTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="#02125E"
+                    android:padding="10dp"
+                    android:text="Temperature"
+                    android:textAlignment="center"
+                    android:textColor="#D1CAC7"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtTemperature"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="32°C"
+                    android:gravity="center"
+                    android:textColor="#333333"
+                    android:textSize="52sp"
+                    app:layout_constraintTop_toBottomOf="@id/temperatureTitle"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:animation="@anim/translate_animation" /> <!-- animation -->
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Humidity Section -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/humiditySection"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/rounded_linear_layout"
+                android:elevation="4dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/temperatureSection">
+
+                <TextView
+                    android:id="@+id/humidityTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="#02125E"
+                    android:padding="10dp"
+                    android:text="Humidity"
+                    android:textAlignment="center"
+                    android:textColor="#D1CAC7"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtHumidity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="60%"
+                    android:gravity="center"
+                    android:textColor="#333333"
+                    android:textSize="52sp"
+                    app:layout_constraintTop_toBottomOf="@id/humidityTitle"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:animation="@anim/translate_animation" /> <!-- animation -->
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Control Mode Section -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/controlModeSection"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@drawable/rounded_linear_layout"
+            android:elevation="4dp"
+            app:layout_constraintTop_toBottomOf="@id/temperatureHumiditySection"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <TextView
+                android:id="@+id/controlModeTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="#02125E"
+                android:padding="10dp"
+                android:text="Control mode"
+                android:textAlignment="center"
+                android:textColor="#D1CAC7"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <TextView
+                android:id="@+id/txtMode"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="mode"
+                android:textColor="#333333"
+                android:textSize="24sp"
+                android:textStyle="bold|italic"
+                app:layout_constraintTop_toBottomOf="@id/controlModeTitle"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <TextView
+                android:id="@+id/txtStatus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="status"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtMode" />
+
+            <Button
+                android:id="@+id/btnSwitchMode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:background="@drawable/button_round_corners"
+                android:backgroundTint="#1E34BD"
+                android:clickable="true"
+                android:text="Switch"
+                android:textColor="#FAF4F4"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:animation="@anim/rotate_animation"
+                android:onClick="onSwitchModeClicked"
+                app:layout_constraintTop_toBottomOf="@id/txtStatus"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Curtain Control Buttons Section -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/curtainControlSection"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/controlModeSection"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <Button
+                android:id="@+id/btnOpen"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:layout_marginEnd="1dp"
+                android:background="@drawable/button_round_corners"
+                android:backgroundTint="#040F53"
+                android:clickable="true"
+                android:elevation="4dp"
+                android:padding="16dp"
+                android:text="OPEN\nCurtain"
+                android:textColor="#FAF4F4"
+                android:textSize="30sp"
+                android:onClick="onOpenClicked"
+                android:animation="@anim/button_scale"
+                app:layout_constraintWidth_percent="0.4"
+                app:layout_constraintHeight_percent="0.3"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/btnClose"/>
+
+            <Button
+                android:id="@+id/btnClose"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+
+                android:background="@drawable/button_round_corners"
+                android:backgroundTint="#040F53"
+                android:clickable="true"
+                android:elevation="4dp"
+                android:padding="16dp"
+                android:text="CLOSE\nCurtain"
+                android:textColor="#FAF4F4"
+                android:textSize="30sp"
+                app:layout_constraintWidth_percent="0.4"
+                app:layout_constraintHeight_percent="0.3"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/btnOpen"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        app:headerLayout="@layout/nav_header_main"
+        android:layout_gravity="start"
+        app:itemIconTint="@color/nav_item_icon"
+        app:menu="@menu/drawer_menu"
+        android:elevation="10dp"
+        app:itemTextColor="@android:color/black"
+        app:itemBackground="@drawable/border" /> <!-- Apply border style here -->
+
+</androidx.drawerlayout.widget.DrawerLayout>
